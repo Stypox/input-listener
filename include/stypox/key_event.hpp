@@ -56,7 +56,7 @@ enum class Key : unsigned char {
 	ms_1, ms_2, ms_3, ms_4,
 	ms_5, ms_6, ms_7, ms_8,
 
-	ms_left = ms_8,
+	ms_left = ms_1,
 	ms_right = ms_2,
 	ms_middle = ms_3,
 

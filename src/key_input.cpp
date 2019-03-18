@@ -124,14 +124,14 @@ void KeyInput::updateKeysStatus() {
 	m_keysStatus[static_cast<size_t>(Key::kb_right_super  )] = glfwGetKey(m_window, GLFW_KEY_RIGHT_SUPER  );
 	m_keysStatus[static_cast<size_t>(Key::kb_menu         )] = glfwGetKey(m_window, GLFW_KEY_MENU         );
 
-	m_keysStatus[static_cast<size_t>(Key::ms_1)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_1);
-	m_keysStatus[static_cast<size_t>(Key::ms_2)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_2);
-	m_keysStatus[static_cast<size_t>(Key::ms_3)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_3);
-	m_keysStatus[static_cast<size_t>(Key::ms_4)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_4);
-	m_keysStatus[static_cast<size_t>(Key::ms_5)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_5);
-	m_keysStatus[static_cast<size_t>(Key::ms_6)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_6);
-	m_keysStatus[static_cast<size_t>(Key::ms_7)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_7);
-	m_keysStatus[static_cast<size_t>(Key::ms_8)] = glfwGetKey(m_window, GLFW_MOUSE_BUTTON_8);
+	m_keysStatus[static_cast<size_t>(Key::ms_1)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_1);
+	m_keysStatus[static_cast<size_t>(Key::ms_2)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_2);
+	m_keysStatus[static_cast<size_t>(Key::ms_3)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_3);
+	m_keysStatus[static_cast<size_t>(Key::ms_4)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_4);
+	m_keysStatus[static_cast<size_t>(Key::ms_5)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_5);
+	m_keysStatus[static_cast<size_t>(Key::ms_6)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_6);
+	m_keysStatus[static_cast<size_t>(Key::ms_7)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_7);
+	m_keysStatus[static_cast<size_t>(Key::ms_8)] = glfwGetMouseButton(m_window, GLFW_MOUSE_BUTTON_8);
 }
 
 
