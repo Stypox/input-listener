@@ -69,7 +69,7 @@ public:
 
 	void update();
 
-	inline bool isPressed(Key key) { return m_keysStatus[static_cast<size_t>(key)]; };
+	inline bool isPressed(Key key) { return m_keysStatus[static_cast<size_t>(key)]; }
 };
 } // namespace stypox
 
