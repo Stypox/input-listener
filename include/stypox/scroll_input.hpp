@@ -6,20 +6,18 @@
 
 namespace stypox {
 class ScrollInput {
-	static void scrollCallback(GLFWwindow* window, double xOffset, double yOffset);
+	static std::vector<ScrollInput*> m_callbacks;
+	static void scrollCallback(GLFWwindow* window, double xOff, double yOff);
 
 	GLFWwindow*& m_window;
 	stypox::EventNotifier& m_eventNotifier;
 
-	double m_xOffset, m_yOffset;
+	double m_xOff, m_yOff;
 
-	void updateOffset(double xOffset, double yOffset);
+	void updateOffset(double xOff, double yOff);
 public:
 	ScrollInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier);
 	~ScrollInput();
-
-	void activateWindowCallback();
-	void removeWindowCallback();
 
 	void update();
 };
