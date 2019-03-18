@@ -1,6 +1,6 @@
 #include "../include/stypox/mousemove_input.hpp"
 
-#include "mousemove_event.hpp"
+#include "../include/stypox/mousemove_event.hpp"
 
 namespace stypox {
 MouseMoveInput::MouseMoveInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier) :
