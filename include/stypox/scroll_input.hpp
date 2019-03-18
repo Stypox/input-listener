@@ -6,7 +6,7 @@
 
 namespace stypox {
 class ScrollInput {
-	static std::vector<ScrollInput*> m_callbacks;
+	static std::map<GLFWwindow*, std::vector<ScrollInput*>> m_callbacks;
 	static void scrollCallback(GLFWwindow* window, double xOff, double yOff);
 
 	GLFWwindow*& m_window;

@@ -3,9 +3,9 @@
 #include "../include/stypox/scroll_event.hpp"
 
 namespace stypox {
-std::vector<ScrollInput*> ScrollInput::m_callbacks{};
+std::map<GLFWwindow*, std::vector<ScrollInput*>> ScrollInput::m_callbacks{};
 void ScrollInput::scrollCallback(GLFWwindow* window, double xOff, double yOff) {
-	for (auto&& scrollInput : m_callbacks)
+	for (auto&& scrollInput : m_callbacks[window])
 		scrollInput->updateOffset(xOff, yOff);
 }
 
@@ -19,10 +19,14 @@ void ScrollInput::updateOffset(double xOff, double yOff) {
 ScrollInput::ScrollInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier) :
 	m_window{window}, m_eventNotifier{eventNotifier},
 	m_xOff{0.0}, m_yOff{0.0} {
-	m_callbacks.push_back(this);
+	m_callbacks[m_window].push_back(this);
+	glfwSetScrollCallback(m_window, scrollCallback);
 }
 ScrollInput::~ScrollInput() {
-	m_callbacks.erase(std::remove(m_callbacks.begin(), m_callbacks.end(), this), m_callbacks.end());
+	auto& windowCallbacks = m_callbacks[m_window];
+	windowCallbacks.erase(std::remove(windowCallbacks.begin(), windowCallbacks.end(), this), windowCallbacks.end());
+	if (windowCallbacks.empty())
+		glfwSetScrollCallback(m_window, nullptr);
 }
 
 void ScrollInput::update() {
