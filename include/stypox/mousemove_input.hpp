@@ -15,8 +15,8 @@ public:
 
 	void update();
 
-	double xPos();
-	double yPos();
+	inline double xPos() { return m_lastX; }
+	inline double yPos() { return m_lastY; }
 };
 } // namespace stypox
 
