@@ -12,7 +12,7 @@ void MouseMoveInput::update() {
 	double xOff = xPos - m_lastX,
 			yOff = yPos - m_lastY;
 
-	if (xOff != 0.0 && yOff != 0.0) {
+	if (xOff != 0.0 || yOff != 0.0) {
 		m_eventNotifier.notify(MouseMoveEvent{xOff, yOff, xPos, yPos});
 		m_lastX = xPos;
 		m_lastY = yPos;

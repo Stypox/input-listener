@@ -33,7 +33,7 @@ void ScrollInput::update() {
 	double xCursor, yCursor;
 	glfwGetCursorPos(m_window, &xCursor, &yCursor);
 
-	if (m_xOff != 0.0 && m_yOff != 0.0) {
+	if (m_xOff != 0.0 || m_yOff != 0.0) {
 		m_eventNotifier.notify(ScrollEvent{m_xOff, m_yOff, xCursor, yCursor});
 		m_xOff = 0.0;
 		m_yOff = 0.0;
