@@ -22,7 +22,7 @@ ScrollInput::ScrollInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifi
 	m_callbacks.push_back(this);
 }
 ScrollInput::~ScrollInput() {
-	m_callbacks.erase(std::remove_if(m_callbacks.begin(), m_callbacks.end(), this), m_callbacks.end());
+	m_callbacks.erase(std::remove(m_callbacks.begin(), m_callbacks.end(), this), m_callbacks.end());
 }
 
 void ScrollInput::update() {
