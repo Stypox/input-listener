@@ -62,14 +62,14 @@ class KeyInput {
 public:
 	KeyInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier, float doublePressDelay);
 
-	void setDoublePressDelay(float doublePressDelay);
+	inline void setDoublePressDelay(float doublePressDelay) { m_doublePressDelay = doublePressDelay; }
 
 	KeyInput& addListener(KeyEvent::Type type, Key key);
 	KeyInput& addLongListener(KeyEvent::TypeLong type, Key key, float delayAfterAction, float delayInBetween);
 
 	void update();
 
-	bool isPressed(Key key);
+	inline bool isPressed(Key key) { return m_keysStatus[static_cast<size_t>(key)]; };
 };
 } // namespace stypox
 
