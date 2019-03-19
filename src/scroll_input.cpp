@@ -14,20 +14,36 @@ void ScrollInput::updateOffset(double xOff, double yOff) {
 	m_xOff += xOff;
 	m_yOff += yOff;
 }
+void ScrollInput::setupCallback() {
+	if (m_window) {
+		m_callbacks[m_window].push_back(this);
+		glfwSetScrollCallback(m_window, scrollCallback);
+	}
+}
+void ScrollInput::removeCallback() {
+	if (m_window) {
+		auto& windowCallbacks = m_callbacks[m_window];
+		windowCallbacks.erase(std::remove(windowCallbacks.begin(), windowCallbacks.end(), this), windowCallbacks.end());
+	}
+}
 
 
-ScrollInput::ScrollInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier) :
+ScrollInput::ScrollInput(stypox::EventNotifier& eventNotifier, GLFWwindow* window) :
 	m_window{window}, m_eventNotifier{eventNotifier},
 	m_xOff{0.0}, m_yOff{0.0} {
-	m_callbacks[m_window].push_back(this);
-	glfwSetScrollCallback(m_window, scrollCallback);
+	setupCallback();
 }
 ScrollInput::~ScrollInput() {
-	auto& windowCallbacks = m_callbacks[m_window];
-	windowCallbacks.erase(std::remove(windowCallbacks.begin(), windowCallbacks.end(), this), windowCallbacks.end());
-	if (windowCallbacks.empty())
-		glfwSetScrollCallback(m_window, nullptr);
+	removeCallback();
 }
+
+
+void ScrollInput::setWindow(GLFWwindow* window) {
+	removeCallback();
+	m_window = window;
+	setupCallback();
+}
+
 
 void ScrollInput::update() {
 	double xCursor, yCursor;

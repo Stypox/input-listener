@@ -36,7 +36,7 @@ class KeyInput {
 			lastAction{0.0f} {}
 	};
 
-	GLFWwindow*& m_window;
+	GLFWwindow* m_window;
 	stypox::EventNotifier& m_eventNotifier;
 	float m_doublePressDelay;
 
@@ -60,8 +60,9 @@ class KeyInput {
 	void updateLongPress();
 	void updateLongRelease();
 public:
-	KeyInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier, float doublePressDelay);
+	KeyInput(stypox::EventNotifier& eventNotifier, float doublePressDelay, GLFWwindow* window = nullptr);
 
+	inline void setWindow(GLFWwindow* window) { m_window = window; }
 	inline void setDoublePressDelay(float doublePressDelay) { m_doublePressDelay = doublePressDelay; }
 
 	KeyInput& addListener(KeyEvent::Type type, Key key);

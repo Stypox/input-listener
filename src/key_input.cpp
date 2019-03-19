@@ -196,7 +196,7 @@ void KeyInput::updateLongRelease() {
 }
 
 
-KeyInput::KeyInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier, float doublePressDelay) :
+KeyInput::KeyInput(stypox::EventNotifier& eventNotifier, float doublePressDelay, GLFWwindow* window) :
 	m_window{window}, m_eventNotifier{eventNotifier},
 	m_doublePressDelay{doublePressDelay}, m_keysStatus{false} {}
 

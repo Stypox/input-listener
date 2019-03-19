@@ -6,12 +6,14 @@
 
 namespace stypox {
 class MouseMoveInput {
-	GLFWwindow*& m_window;
+	GLFWwindow* m_window;
 	stypox::EventNotifier& m_eventNotifier;
 
 	double m_lastX, m_lastY;
 public:
-	MouseMoveInput(GLFWwindow*& window, stypox::EventNotifier& eventNotifier);
+	MouseMoveInput(stypox::EventNotifier& eventNotifier, GLFWwindow* window = nullptr);
+
+	inline void setWindow(GLFWwindow* window) { m_window = window; }
 
 	void update();
 
